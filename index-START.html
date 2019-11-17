@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Without Articles</title>
+</head>
+
+<body>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #movies {
+      list-style: inside square;
+      font-size: 20px;
+      background: white;
+      width: 500px;
+      margin: auto;
+      padding: 0;
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    #movies li {
+      border-bottom: 1px solid #efefef;
+      padding: 20px;
+    }
+
+    #movies li:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      color: #ffc600;
+      text-decoration: none;
+    }
+  </style>
+
+  <ul id="movies"></ul>
+
+  <script>
+    const movies = ['All About The Benjamins', 'Money Talks', 'Friday', 'Boyz N The Hood', 'The Matrix', 'The Life of Pi', 'Bad Boys II', 'Blue Streak', 'Friday After Next', 'Next Friday', 'Saw I', 'Terminator 2', 'Spiritually Enlightening Docs'];
+
+    function strip(movieName) {
+      return movieName.replace(/^(a |the |an)/i, '').trim();
+    }
+
+    const sortedMovies = movies.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+    document.querySelector('#movies').innerHTML = sortedMovies.map(movie => `<li>${movie}</li>`).join('');
+    console.log(sortedMovies);
+  </script>
+
+</body>
+
+</html>
